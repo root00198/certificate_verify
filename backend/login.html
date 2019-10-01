@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="utf-8" />
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body class="authentication-bg authentication-bg-pattern d-flex align-items-center">
+        
+        <div class="account-pages w-100 mt-5 mb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card">
+
+                            <div class="card-body p-4">
+                                
+                                <div class="text-center mb-4">
+                                    <a href="index.html">
+                                        <span><img src="assets/images/logo-dark.png" alt="" height="28"></span>
+                                    </a>
+                                </div>
+
+                              
+
+                                    <div class="form-group mb-3">
+                                        <label for="emailaddress">Counselor ID</label>
+                                        <input class="form-control" type="email" id="email" required="" name="email" placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="password">Password</label>
+                                        <input class="form-control" type="password" required="" id="password" name="password" placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <button class="btn btn-success btn-block" type="submit" onclick="callajax();"> Log In </button>
+                                    </div>
+
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+
+        <!-- Vendor js -->
+        <script src="assets/js/vendor.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/app.min.js"></script>
+
+        <script>
+            
+            function post(path, params, method='post') {
+
+// The rest of this code assumes you are not using a library.
+// It can be made less wordy if you use one.
+const form = document.createElement('form');
+form.method = method;
+form.action = path;
+
+for (const key in params) {
+  if (params.hasOwnProperty(key)) {
+    const hiddenField = document.createElement('input');
+    hiddenField.type = 'hidden';
+    hiddenField.name = key;
+    hiddenField.value = params[key];
+
+    form.appendChild(hiddenField);
+  }
+}
+
+document.body.appendChild(form);
+form.submit();
+}
+       
+
+        function callajax(){
+            //alert("Asada");
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+        $.ajax({    
+            type: "POST",
+            url: "/certificate_verify/backend/login2.php",
+            data: {email : email,
+                    password : password},
+            }).done(function( msg ) {
+                if(msg=='error')
+                {
+                    //alert(msg);
+                    alert("Something is Not Right...")
+                }
+                else    
+                {
+                    //alert(msg);
+                    window.location = "/certificate_verify/backend/dashboard.php";
+                }
+            });  
+
+            //post('login.php',{email : email, password : password});
+        }
+        
+        </script>
+
+    </body>
+</html>

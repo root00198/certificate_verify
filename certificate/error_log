@@ -1,0 +1,5 @@
+[27-Aug-2019 17:00:08 Etc/GMT] PHP Notice:  Undefined variable: row in /home/leadzaza/public_html/whataftercollege.com/certificate_verify/certificate/index.php on line 15
+[27-Aug-2019 17:00:08 Etc/GMT] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/leadzaza/public_html/whataftercollege.com/certificate_verify/certificate/index.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/leadzaza/public_html/whataftercollege.com/certificate_verify/certificate/index.php on line 17
